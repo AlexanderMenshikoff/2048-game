@@ -1,16 +1,72 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
-  height: 400px;
-  background-color: aqua;
+  width: 660px;
+  height: 660px;
+  background-color: rgb(246, 253, 205);
+  border-radius: 15px;
+  justify-content: center;
 }
 
 .grid div {
-  width: 100px;
-  height: 100px;
-  background-color: yellow;
-  font-size: 60px;
+  width: 140px;
+  height: 140px;
+  background-color: rgb(248, 230, 125);
+  font-size: 94px;
   text-align: center;
+  line-height: 130px;
   font-weight: bold;
+  border-radius: 15px;
+  margin: 10px;
+  color: aliceblue;
+}
+
+.game-container {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.game-window-container {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.game-window {
+  display: flex;
+  width: 660px;
+  height: 660px;
+  background-color: rgb(246, 253, 205);
+  border-radius: 15px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.game-window-button {
+  width: 100px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+  color: white;
+}
+
+.game-window-button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s ease-in-out;
+}
+
+.score-container {
+  text-align: center;
 }

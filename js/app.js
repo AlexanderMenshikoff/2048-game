@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     const gridDisplay = document.querySelector('.grid')
     const scoreDisplay = document.querySelector('#score')
-    const resultDisplay = document.querySelector('#result')
     const width = 4
     let squares = []
     let score = 0
@@ -53,7 +52,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             }
         }
-        
     }
 
        //свайп влево
@@ -78,7 +76,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             }
         }
-        
     }
 
 
@@ -150,8 +147,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         checkForWin()
     }
 
-
-
     function control(e){
         if(e.keyCode === 39){
             keyRight()
@@ -198,7 +193,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     function checkForWin(){
         for(let i=0; i < squares.length; i++){
             if(squares[i].innerHTML == 2048){
-                resultDisplay.innerHTML = 'You win!'
+                openGameWindow()
                 document.removeEventListener('keyup', control)
             }
         }
@@ -212,10 +207,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         }
         if(zeros === 0){
-            resultDisplay.innerHTML = 'You Lose!'
-            document.removeEventListener('keyup', control)
+            openGameWindow()
+            document.removeEventListener('keyup', control)                
         }
     }
 
+    function openGameWindow(){
+        let gameContainer = document.querySelector('.container')
+        for(let i=0; i < squares.length; i++){
+        gameContainer.innerHTML = `
+        <div class = 'game-window-container'>
+            <div class = 'game-window'>
+                <div class = 'game-window-inner'>
+                    ${squares[i].innerHTML == 2048 ? '<h2 class = "win-text">Вы выиграли!</h2>' : '<h2 class = "lose-text">Вы проиграли!</h2>'}
+                    <h2 class = 'score-text'>Счёт: ${score}</h2>
+                    <button class = 'game-window-button'>Ещё раз</button>
+                </div>
+            </div>
+        </div>
+        `
+        }
+        let modalBtn = document.querySelector('.game-window-button')
+        modalBtn.addEventListener('click', () => location.reload())
+    }
 })
 
